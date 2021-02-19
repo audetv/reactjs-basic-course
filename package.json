@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/audetv/reactjs-basic-course/issues"
   },
-  "homepage": "https://github.com/audetv/reactjs-basic-course#readme"
+  "homepage": "https://github.com/audetv/reactjs-basic-course#readme",
+  "dependencies": {
+    "webpack": "^5.23.0"
+  }
 }
