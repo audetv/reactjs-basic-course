@@ -1,10 +1,12 @@
 import React from "react";
-import {Message} from "../Messages";
+import {Messages} from "../Messages";
 
 const App = () => {
     return <div id="test-id">
         <h2>Hello from React.</h2>
-        <Message text="My new message"/>
+        <Messages messages={
+            ['First Message', 'Second message', 'Third message']
+        }/>
     </div>;
 };
 
