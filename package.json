@@ -18,5 +18,8 @@
   "homepage": "https://github.com/audetv/reactjs-basic-course#readme",
   "dependencies": {
     "webpack": "^5.23.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.5.0"
   }
 }
