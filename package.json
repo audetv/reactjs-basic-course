@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/audetv/reactjs-basic-course#readme",
   "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "webpack": "^5.23.0"
   },
   "devDependencies": {
