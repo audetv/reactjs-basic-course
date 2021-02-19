@@ -1,6 +1,13 @@
 ### ReactJS. Basic Course.
 
-...
+Run:
+
+`yarn install`
+
+`yarn start`
+
+`yarn build`
+
 
 ##### Updating Yarn to the latest versions
 
