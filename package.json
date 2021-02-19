@@ -1,0 +1,19 @@
+{
+  "name": "reactjs-basic-course",
+  "version": "1.0.0",
+  "description": "GeekBrains. ReactJS. Basic Course.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/audetv/reactjs-basic-course.git"
+  },
+  "author": "Aleksey Gusev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/audetv/reactjs-basic-course/issues"
+  },
+  "homepage": "https://github.com/audetv/reactjs-basic-course#readme"
+}
