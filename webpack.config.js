@@ -17,7 +17,6 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'static', 'build'),
         filename: "bundle.js",
-        publicPath: "/static/build/",
     },
     module: {
         rules: [
