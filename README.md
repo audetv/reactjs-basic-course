@@ -1,8 +1,8 @@
 ### ReactJS. Basic Course.
 
-Run:
+Use Yarn Zero-Installs:
 
-`yarn install`
+Run:
 
 `yarn start`
 
