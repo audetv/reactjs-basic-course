@@ -40,7 +40,13 @@ module.exports = {
                                 runtime: 'automatic'
                             }
                         ]
-                    ]
+                    ],
+                    plugins: [
+                        [
+                            '@babel/plugin-proposal-class-properties',
+                            { loose: true },
+                        ],
+                    ],
                 },
             },
             {
