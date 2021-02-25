@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/audetv/reactjs-basic-course#readme",
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "webpack": "^5.23.0"
