@@ -9,10 +9,12 @@ class Messages extends Component {
         {
           text: 'Hello world!',
           author: 'User',
+          date: new Date()
         },
         {
           text: 'How are you?',
           author: 'User',
+          date: new Date()
         }
       ],
     }
@@ -23,7 +25,9 @@ class Messages extends Component {
   };
 
   addMessage() {
-    this.setState({messages: [...this.state.messages, {text: 'Whassap?', author: 'User'}]});
+    this.setState({messages: [
+      ...this.state.messages, {text: 'Whassap?', author: 'User', date: new Date()}
+      ]});
   };
 
   getRandomAnswer() {
@@ -33,8 +37,8 @@ class Messages extends Component {
       'My name is Robot.',
       'I am smart Robot 2.0.'
     ];
-    return {text: answers[Math.floor(Math.random() * 4)], author: 'Robot'};
-  }
+    return {text: answers[Math.floor(Math.random() * 4)], author: 'Robot', date: new Date()};
+  };
 
   componentDidUpdate() {
     if (this.getLastMessage().author === 'User') {
@@ -44,7 +48,7 @@ class Messages extends Component {
         });
       }, 1000);
     }
-  }
+  };
 
   render() {
     const messages = this.state.messages;
@@ -60,14 +64,15 @@ class Messages extends Component {
         <button onClick={this.addMessage.bind(this)}>Send message</button>
       </>
     );
-  }
+  };
 }
 
 const MessageItem = (props) => {
-  const {text, author} = props.message;
+  const {text, author, date} = props.message;
   return <div className='message-item'>
     <span>{author}:&nbsp;</span>
-    {text}
+    {text}<br />
+    {date.toLocaleString()}
   </div>;
 };
 
