@@ -56,25 +56,29 @@ class Messages extends Component {
     const messages = this.state.messages;
 
     return (
-      <>
-        <div className='messages'>
+      <div className='layout'>
+        <div className='message-field'>
           {messages.map((item, index) => (
             <MessageItem key={index} message={item} />
           ))}
         </div>
 
         <button onClick={this.addMessage.bind(this)}>Отправить сообщение</button>
-      </>
+      </div>
     );
   };
 }
 
 const MessageItem = (props) => {
   const { text, author, date } = props.message;
-  return <div className='message-item'>
-    <span>{author}:&nbsp;</span>
-    {text}<br />
-    {date.toLocaleString()}
+  return <div
+    className='message'
+    style={{ alignSelf: author === 'Robot' ? 'flex-start' : 'flex-end' }}
+  >
+    <div>{text}</div>
+    <small>
+      <span>{author}</span>,&nbsp; {date.toLocaleString()}
+    </small>
   </div>;
 };
 
