@@ -46,12 +46,14 @@ class Messages extends Component {
   }
 
   sendMessage = (message) => {
-    this.setState({
-      messages: [
-        ...this.state.messages, { text: message, author: 'User', date: new Date() }
-      ],
-      'input': '',
-    });
+    if (message !== '') {
+      this.setState({
+        messages: [
+          ...this.state.messages, { text: message, author: 'User', date: new Date() }
+        ],
+        'input': '',
+      });
+    }
   }
 
   getRandomAnswer() {
