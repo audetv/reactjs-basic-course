@@ -1,10 +1,11 @@
-import React from 'react';
+import { Component } from 'react';
+import { TextField, Icon, IconButton } from '@material-ui/core';
 import './Messages.scss'
 
-class Messages extends React.Component {
+class Messages extends Component {
   constructor(props) {
     super(props);
-    this.textInput = React.createRef();
+
     this.state = {
       messages: [
         {
@@ -23,7 +24,7 @@ class Messages extends React.Component {
   }
 
   componentDidMount() {
-    this.textInput.current.focus();
+    this.inputRef.focus();
   }
 
   getLastMessage() {
@@ -39,7 +40,7 @@ class Messages extends React.Component {
   }
 
   handleKeyUp = (event, message) => {
-    if (event.keyCode === 13) {
+    if (event.key === 'Enter') {
       this.sendMessage(message);
     }
   }
@@ -70,8 +71,8 @@ class Messages extends React.Component {
           messages: [...this.state.messages, this.getRandomAnswer()],
         });
       }, 1000);
+      this.inputRef.focus()
     }
-    this.textInput.current.focus();
   };
 
   render() {
@@ -84,21 +85,23 @@ class Messages extends React.Component {
             <MessageItem key={index} message={item} />
           ))}
         </div>
-
-        <input
-          ref={this.textInput}
-          name="input"
-          style={{ fontSize: '22px' }}
-          onChange={this.handleChange}
-          value={this.state.input}
-          onKeyUp={(event) => this.handleKeyUp(event, this.state.input)}
-        />
-        <button
-          style={{ fontSize: '22px' }}
-          onClick={() => this.handleClick(this.state.input)}
-        >
-          Отправить сообщение
-        </button>
+        <div style={{ width: '100%', display: 'flex' }}>
+          <TextField
+            inputRef={el => this.inputRef = el}
+            name="input"
+            style={{ fontSize: '22px' }}
+            onChange={this.handleChange}
+            value={this.state.input}
+            onKeyDown={(event) => this.handleKeyUp(event, this.state.input)}
+          />
+          <IconButton
+            color='primary'
+            variant='contained'
+            onClick={() => this.handleClick(this.state.input)}
+          >
+            <Icon>send</Icon>
+          </IconButton>
+        </div>
       </div>
     );
   };
