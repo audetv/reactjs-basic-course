@@ -1,9 +1,10 @@
-import { Component } from 'react';
+import React from 'react';
 import './Messages.scss'
 
-class Messages extends Component {
+class Messages extends React.Component {
   constructor(props) {
     super(props);
+    this.textInput = React.createRef();
     this.state = {
       messages: [
         {
@@ -19,6 +20,10 @@ class Messages extends Component {
       ],
       input: '',
     }
+  }
+
+  componentDidMount() {
+    this.textInput.current.focus();
   }
 
   getLastMessage() {
@@ -66,6 +71,7 @@ class Messages extends Component {
         });
       }, 1000);
     }
+    this.textInput.current.focus();
   };
 
   render() {
@@ -80,6 +86,7 @@ class Messages extends Component {
         </div>
 
         <input
+          ref={this.textInput}
           name="input"
           style={{ fontSize: '22px' }}
           onChange={this.handleChange}
