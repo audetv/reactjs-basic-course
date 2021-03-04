@@ -17,6 +17,7 @@ class Messages extends Component {
           date: new Date()
         }
       ],
+      input: '',
     }
   }
 
@@ -24,13 +25,28 @@ class Messages extends Component {
     return this.state.messages.slice(-1)[0];
   };
 
-  addMessage() {
+  handleClick = (message) => {
+    this.sendMessage(message);
+  };
+
+  handleChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
+  }
+
+  handleKeyUp = (event, message) => {
+    if (event.keyCode === 13) {
+      this.sendMessage(message);
+    }
+  }
+
+  sendMessage = (message) => {
     this.setState({
       messages: [
-        ...this.state.messages, { text: 'Whassap?', author: 'User', date: new Date() }
-      ]
+        ...this.state.messages, { text: message, author: 'User', date: new Date() }
+      ],
+      'input': '',
     });
-  };
+  }
 
   getRandomAnswer() {
     const answers = [
@@ -63,14 +79,26 @@ class Messages extends Component {
           ))}
         </div>
 
-        <button onClick={this.addMessage.bind(this)}>Отправить сообщение</button>
+        <input
+          name="input"
+          style={{ fontSize: '22px' }}
+          onChange={this.handleChange}
+          value={this.state.input}
+          onKeyUp={(event) => this.handleKeyUp(event, this.state.input)}
+        />
+        <button
+          style={{ fontSize: '22px' }}
+          onClick={() => this.handleClick(this.state.input)}
+        >
+          Отправить сообщение
+        </button>
       </div>
     );
   };
 }
 
 const MessageItem = (props) => {
-  const { text, author, date } = props.message;
+  const { text, author, date = null } = props.message;
   return <div
     className='message'
     style={{ alignSelf: author === 'Robot' ? 'flex-start' : 'flex-end' }}
