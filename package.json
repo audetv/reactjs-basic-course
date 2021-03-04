@@ -19,6 +19,9 @@
   },
   "homepage": "https://github.com/audetv/reactjs-basic-course#readme",
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.57",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "webpack": "^5.23.0"
@@ -26,6 +29,7 @@
   "devDependencies": {
     "@babel/cli": "^7.12.17",
     "@babel/core": "^7.12.17",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/preset-env": "^7.12.17",
     "@babel/preset-react": "^7.12.13",
     "babel-loader": "^8.2.2",
@@ -41,6 +45,7 @@
     "sass": "^1.32.8",
     "sass-loader": "^11.0.1",
     "style-loader": "^2.0.0",
+    "url-loader": "^4.1.1",
     "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^3.11.2"
   }
