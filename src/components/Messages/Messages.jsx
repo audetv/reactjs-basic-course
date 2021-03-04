@@ -1,4 +1,4 @@
-import {Component} from 'react';
+import { Component } from 'react';
 import './Messages.scss'
 
 class Messages extends Component {
@@ -25,9 +25,11 @@ class Messages extends Component {
   };
 
   addMessage() {
-    this.setState({messages: [
-      ...this.state.messages, {text: 'Whassap?', author: 'User', date: new Date()}
-      ]});
+    this.setState({
+      messages: [
+        ...this.state.messages, { text: 'Whassap?', author: 'User', date: new Date() }
+      ]
+    });
   };
 
   getRandomAnswer() {
@@ -37,7 +39,7 @@ class Messages extends Component {
       'My name is Robot.',
       'I am smart Robot 2.0.'
     ];
-    return {text: answers[Math.floor(Math.random() * 4)], author: 'Robot', date: new Date()};
+    return { text: answers[Math.floor(Math.random() * 4)], author: 'Robot', date: new Date() };
   };
 
   componentDidUpdate() {
@@ -57,18 +59,18 @@ class Messages extends Component {
       <>
         <div className='messages'>
           {messages.map((item, index) => (
-            <MessageItem key={index} message={item}/>
+            <MessageItem key={index} message={item} />
           ))}
         </div>
 
-        <button onClick={this.addMessage.bind(this)}>Send message</button>
+        <button onClick={this.addMessage.bind(this)}>Отправить сообщение</button>
       </>
     );
   };
 }
 
 const MessageItem = (props) => {
-  const {text, author, date} = props.message;
+  const { text, author, date } = props.message;
   return <div className='message-item'>
     <span>{author}:&nbsp;</span>
     {text}<br />
@@ -76,4 +78,4 @@ const MessageItem = (props) => {
   </div>;
 };
 
-export {Messages};
+export { Messages };
