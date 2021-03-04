@@ -3,12 +3,11 @@
   flex-direction: column;
   background-color: #e2e2e2;
   height: 50%;
-  width: 100%;
   padding: 20px;
   overflow-y: scroll;
 }
 
-.layout {
+.layout1 {
   height: 100%;
   width: 50%;
   margin: auto;

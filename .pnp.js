@@ -60,6 +60,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["sass", "npm:1.32.8"],
             ["sass-loader", "virtual:db07554871fcf260a4b40265fd2563462a5be71223484515441a8942ca3a603e1a96b1dc55e57f8ea278386c0e2b35a64c425adee969bcaa345a47b7e88da529#npm:11.0.1"],
             ["style-loader", "virtual:db07554871fcf260a4b40265fd2563462a5be71223484515441a8942ca3a603e1a96b1dc55e57f8ea278386c0e2b35a64c425adee969bcaa345a47b7e88da529#npm:2.0.0"],
+            ["url-loader", "virtual:db07554871fcf260a4b40265fd2563462a5be71223484515441a8942ca3a603e1a96b1dc55e57f8ea278386c0e2b35a64c425adee969bcaa345a47b7e88da529#npm:4.1.1"],
             ["webpack", "virtual:db07554871fcf260a4b40265fd2563462a5be71223484515441a8942ca3a603e1a96b1dc55e57f8ea278386c0e2b35a64c425adee969bcaa345a47b7e88da529#npm:5.23.0"],
             ["webpack-cli", "virtual:db07554871fcf260a4b40265fd2563462a5be71223484515441a8942ca3a603e1a96b1dc55e57f8ea278386c0e2b35a64c425adee969bcaa345a47b7e88da529#npm:4.5.0"],
             ["webpack-dev-server", "virtual:db07554871fcf260a4b40265fd2563462a5be71223484515441a8942ca3a603e1a96b1dc55e57f8ea278386c0e2b35a64c425adee969bcaa345a47b7e88da529#npm:3.11.2"]
@@ -8723,6 +8724,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["sass", "npm:1.32.8"],
             ["sass-loader", "virtual:db07554871fcf260a4b40265fd2563462a5be71223484515441a8942ca3a603e1a96b1dc55e57f8ea278386c0e2b35a64c425adee969bcaa345a47b7e88da529#npm:11.0.1"],
             ["style-loader", "virtual:db07554871fcf260a4b40265fd2563462a5be71223484515441a8942ca3a603e1a96b1dc55e57f8ea278386c0e2b35a64c425adee969bcaa345a47b7e88da529#npm:2.0.0"],
+            ["url-loader", "virtual:db07554871fcf260a4b40265fd2563462a5be71223484515441a8942ca3a603e1a96b1dc55e57f8ea278386c0e2b35a64c425adee969bcaa345a47b7e88da529#npm:4.1.1"],
             ["webpack", "virtual:db07554871fcf260a4b40265fd2563462a5be71223484515441a8942ca3a603e1a96b1dc55e57f8ea278386c0e2b35a64c425adee969bcaa345a47b7e88da529#npm:5.23.0"],
             ["webpack-cli", "virtual:db07554871fcf260a4b40265fd2563462a5be71223484515441a8942ca3a603e1a96b1dc55e57f8ea278386c0e2b35a64c425adee969bcaa345a47b7e88da529#npm:4.5.0"],
             ["webpack-dev-server", "virtual:db07554871fcf260a4b40265fd2563462a5be71223484515441a8942ca3a603e1a96b1dc55e57f8ea278386c0e2b35a64c425adee969bcaa345a47b7e88da529#npm:3.11.2"]
@@ -10345,6 +10347,35 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["url", "npm:0.11.0"],
             ["punycode", "npm:1.3.2"],
             ["querystring", "npm:0.2.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["url-loader", [
+        ["npm:4.1.1", {
+          "packageLocation": "./.yarn/cache/url-loader-npm-4.1.1-568e22ebcb-871e8c8df2.zip/node_modules/url-loader/",
+          "packageDependencies": [
+            ["url-loader", "npm:4.1.1"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:db07554871fcf260a4b40265fd2563462a5be71223484515441a8942ca3a603e1a96b1dc55e57f8ea278386c0e2b35a64c425adee969bcaa345a47b7e88da529#npm:4.1.1", {
+          "packageLocation": "./.yarn/$$virtual/url-loader-virtual-36acc40e75/0/cache/url-loader-npm-4.1.1-568e22ebcb-871e8c8df2.zip/node_modules/url-loader/",
+          "packageDependencies": [
+            ["url-loader", "virtual:db07554871fcf260a4b40265fd2563462a5be71223484515441a8942ca3a603e1a96b1dc55e57f8ea278386c0e2b35a64c425adee969bcaa345a47b7e88da529#npm:4.1.1"],
+            ["@types/file-loader", null],
+            ["@types/webpack", null],
+            ["file-loader", null],
+            ["loader-utils", "npm:2.0.0"],
+            ["mime-types", "npm:2.1.29"],
+            ["schema-utils", "npm:3.0.0"],
+            ["webpack", "virtual:db07554871fcf260a4b40265fd2563462a5be71223484515441a8942ca3a603e1a96b1dc55e57f8ea278386c0e2b35a64c425adee969bcaa345a47b7e88da529#npm:5.23.0"]
+          ],
+          "packagePeers": [
+            "@types/file-loader",
+            "@types/webpack",
+            "file-loader",
+            "webpack"
           ],
           "linkType": "HARD",
         }]

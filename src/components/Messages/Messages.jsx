@@ -49,7 +49,7 @@ class Messages extends Component {
     if (message !== '') {
       this.setState({
         messages: [
-          ...this.state.messages, { text: message, author: 'User', date: new Date() }
+          ...this.state.messages, { text: message, author: 'User', date: new Date() },
         ],
         'input': '',
       });
@@ -73,7 +73,7 @@ class Messages extends Component {
           messages: [...this.state.messages, this.getRandomAnswer()],
         });
       }, 1000);
-      this.inputRef.focus()
+      this.inputRef.focus();
     }
   };
 
@@ -81,7 +81,7 @@ class Messages extends Component {
     const messages = this.state.messages;
 
     return (
-      <div className='layout'>
+      <div className='messages'>
         <div className='message-field'>
           {messages.map((item, index) => (
             <MessageItem key={index} message={item} />
