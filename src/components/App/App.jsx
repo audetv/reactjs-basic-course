@@ -1,11 +1,10 @@
-import {Messages} from "../Messages";
 import './App.css'
+import Layout from '../Layout/Layout';
 
 const App = () => {
-    return <div id="test-id">
-        <h2 className="title">Hello from React.</h2>
-        <Messages />
-    </div>;
+  return <div id="test-id">
+    <Layout />
+  </div>;
 };
 
-export {App};
+export { App };

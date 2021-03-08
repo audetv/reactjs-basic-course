@@ -1,9 +1,11 @@
-import {Component} from 'react';
+import { Component } from 'react';
+import { TextField, Icon, IconButton } from '@material-ui/core';
 import './Messages.scss'
 
 class Messages extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       messages: [
         {
@@ -17,18 +19,42 @@ class Messages extends Component {
           date: new Date()
         }
       ],
+      input: '',
     }
+  }
+
+  componentDidMount() {
+    this.inputRef.focus();
   }
 
   getLastMessage() {
     return this.state.messages.slice(-1)[0];
   };
 
-  addMessage() {
-    this.setState({messages: [
-      ...this.state.messages, {text: 'Whassap?', author: 'User', date: new Date()}
-      ]});
+  handleClick = (message) => {
+    this.sendMessage(message);
   };
+
+  handleChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
+  }
+
+  handleKeyUp = (event, message) => {
+    if (event.key === 'Enter') {
+      this.sendMessage(message);
+    }
+  }
+
+  sendMessage = (message) => {
+    if (message !== '') {
+      this.setState({
+        messages: [
+          ...this.state.messages, { text: message, author: 'User', date: new Date() },
+        ],
+        'input': '',
+      });
+    }
+  }
 
   getRandomAnswer() {
     const answers = [
@@ -37,7 +63,7 @@ class Messages extends Component {
       'My name is Robot.',
       'I am smart Robot 2.0.'
     ];
-    return {text: answers[Math.floor(Math.random() * 4)], author: 'Robot', date: new Date()};
+    return { text: answers[Math.floor(Math.random() * 4)], author: 'Robot', date: new Date() };
   };
 
   componentDidUpdate() {
@@ -47,6 +73,7 @@ class Messages extends Component {
           messages: [...this.state.messages, this.getRandomAnswer()],
         });
       }, 1000);
+      this.inputRef.focus();
     }
   };
 
@@ -54,26 +81,45 @@ class Messages extends Component {
     const messages = this.state.messages;
 
     return (
-      <>
-        <div className='messages'>
+      <div className='messages'>
+        <div className='message-field'>
           {messages.map((item, index) => (
-            <MessageItem key={index} message={item}/>
+            <MessageItem key={index} message={item} />
           ))}
         </div>
-
-        <button onClick={this.addMessage.bind(this)}>Send message</button>
-      </>
+        <div style={{ width: '100%', display: 'flex' }}>
+          <TextField
+            inputRef={el => this.inputRef = el}
+            name="input"
+            style={{ fontSize: '22px' }}
+            onChange={this.handleChange}
+            value={this.state.input}
+            onKeyDown={(event) => this.handleKeyUp(event, this.state.input)}
+          />
+          <IconButton
+            color='primary'
+            variant='contained'
+            onClick={() => this.handleClick(this.state.input)}
+          >
+            <Icon>send</Icon>
+          </IconButton>
+        </div>
+      </div>
     );
   };
 }
 
 const MessageItem = (props) => {
-  const {text, author, date} = props.message;
-  return <div className='message-item'>
-    <span>{author}:&nbsp;</span>
-    {text}<br />
-    {date.toLocaleString()}
+  const { text, author, date = null } = props.message;
+  return <div
+    className='message'
+    style={{ alignSelf: author === 'Robot' ? 'flex-start' : 'flex-end' }}
+  >
+    <div>{text}</div>
+    <small>
+      <span>{author}</span>,&nbsp; {date.toLocaleString()}
+    </small>
   </div>;
 };
 
-export {Messages};
+export { Messages };
