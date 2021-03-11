@@ -66,17 +66,15 @@ class ChatList extends Component {
         <List className={classes.root}>
           {
             this.state.chats.map((chat, index) => (
-              <Link key={chat.id} to={`/chat/${chat.id}`}>
-                <ListItem key={chat.id}>
-                  <ListItemAvatar>
-                    <Avatar
-                      alt={`Avatar n°${chat.avatar}`}
-                      src={require(`./images/${chat.avatar}.jpg`)}
-                    />
-                  </ListItemAvatar>
-                  <ListItemText primary={chat.name} secondary={chat.date} />
-                </ListItem>
-              </Link>
+              <ListItem key={chat.id} button component={Link} to={`/chat/${chat.id}`}>
+                <ListItemAvatar>
+                  <Avatar
+                    alt={`Avatar n°${chat.avatar}`}
+                    src={require(`./images/${chat.avatar}.jpg`)}
+                  />
+                </ListItemAvatar>
+                <ListItemText primary={chat.name} secondary={chat.date} />
+              </ListItem>
             ))
           }
         </List>

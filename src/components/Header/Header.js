@@ -17,6 +17,8 @@ const useStyles = theme => ({
   },
   title: {
     flexGrow: 1,
+    color: '#fff',
+    textDecoration: 'none',
   },
 });
 
@@ -30,14 +32,10 @@ class Header extends Component {
             <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" className={classes.title}>
-              <Link to='/'>
+            <Typography variant="h6" className={classes.title} component={Link} to={'/'}>
                 Messenger
-              </Link>
             </Typography>
-            <Link to='/profile'>
-              <Button color="inherit" to='/profile'>Profile</Button>
-            </Link>
+              <Button color="inherit" component={Link} to='/profile'>Profile</Button>
             <Button color="inherit">Login</Button>
           </Toolbar>
         </AppBar>
