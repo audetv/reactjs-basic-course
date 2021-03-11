@@ -66,7 +66,7 @@ class ChatList extends Component {
         <List className={classes.root}>
           {
             this.state.chats.map((chat, index) => (
-              <ListItem key={chat.id} button component={Link} to={`/chat/${chat.id}`}>
+              <ListItem key={chat.id} button component={Link} to={`/chat/${index}`}>
                 <ListItemAvatar>
                   <Avatar
                     alt={`Avatar n°${chat.avatar}`}

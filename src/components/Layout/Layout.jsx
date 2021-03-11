@@ -11,13 +11,14 @@ import './Layout.scss';
 class _Layout extends Component {
   render() {
     const { params } = this.props.match;
+    console.log(params)
 
     return (
       <div className='container'>
         <Header />
         <div className='wrapper'>
           <ChatList />
-          <Messages currentChat={params.id} />
+          <Messages currentChat={params.chatId} />
         </div>
       </div>
     );
