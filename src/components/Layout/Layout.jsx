@@ -11,7 +11,6 @@ import './Layout.scss';
 class _Layout extends Component {
   render() {
     const { params } = this.props.match;
-    console.log(params)
 
     return (
       <div className='container'>

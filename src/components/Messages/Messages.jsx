@@ -8,7 +8,7 @@ class Messages extends Component {
 
     this.state = {
       messages: {
-        0: [
+        '3589ff30-b78e-4d34-ae03-af1e51c761de': [
           {
             text: 'Hello world!',
             author: 'User',
@@ -20,8 +20,8 @@ class Messages extends Component {
             date: new Date()
           }
         ],
-        1: [],
-        2: [
+        '6861239f-4d22-41a9-bfff-5fb7bc6738c4': [],
+        '5e3d3917-0dd9-4edb-b4b5-aa97d87607bb': [
           {
             text: 'Hello from chat 2',
             author: 'User',
@@ -58,6 +58,20 @@ class Messages extends Component {
   sendMessage = (message) => {
 
     const { currentChat } = this.props;
+    const messages = this.state.messages;
+
+    if (!messages[currentChat]) {
+      this.setState({
+        messages: {
+          ...this.state.messages,
+          [currentChat]: [
+            {
+              text: message, author: 'User', date: new Date(),
+            }
+          ],
+        }
+      });
+    }
 
     if (message !== '') {
       this.setState({
@@ -86,6 +100,7 @@ class Messages extends Component {
   };
 
   componentDidUpdate(_, prevState) {
+
     const { currentChat } = this.props;
 
     if (prevState.messages[currentChat]?.length !==

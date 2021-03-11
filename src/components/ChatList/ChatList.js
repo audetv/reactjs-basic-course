@@ -1,17 +1,13 @@
 import { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import {
   Icon,
   List,
   TextField,
   withStyles,
-  ListItem,
-  ListItemText,
-  ListItemAvatar,
-  Avatar,
   IconButton
 } from '@material-ui/core'
+import { MenuItem } from './MenuItem';
 
 const styles = (theme) => ({
   root: {
@@ -25,19 +21,19 @@ class ChatList extends Component {
   state = {
     chats: [
       {
-        id: uuid(),
+        id: '3589ff30-b78e-4d34-ae03-af1e51c761de',
         name: 'Chat 1',
         date: 'Jan 9, 2014',
         avatar: '1',
       },
       {
-        id: uuid(),
+        id: '6861239f-4d22-41a9-bfff-5fb7bc6738c4',
         name: 'Chat 2',
         date: 'Jan 7, 2014',
         avatar: '2',
       },
       {
-        id: uuid(),
+        id: '5e3d3917-0dd9-4edb-b4b5-aa97d87607bb',
         name: 'Chat 3',
         date: 'July 20, 2014',
         avatar: '3',
@@ -70,15 +66,7 @@ class ChatList extends Component {
         <List className={classes.root}>
           {
             this.state.chats.map((chat, index) => (
-              <ListItem key={chat.id} button component={Link} to={`/chat/${index}`}>
-                <ListItemAvatar>
-                  <Avatar
-                    alt={`Avatar n°${chat.avatar}`}
-                    src={require(`./images/${chat.avatar}.jpg`)}
-                  />
-                </ListItemAvatar>
-                <ListItemText primary={chat.name} secondary={chat.date} />
-              </ListItem>
+              <MenuItem key={index} {...chat} />
             ))
           }
         </List>
