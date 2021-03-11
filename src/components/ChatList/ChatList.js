@@ -1,13 +1,17 @@
 import { Component } from 'react';
-import { Icon, List, TextField } from '@material-ui/core'
-import { withStyles } from '@material-ui/core/styles';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
-import IconButton from '@material-ui/core/IconButton';
+import {
+  Icon,
+  List,
+  TextField,
+  withStyles,
+  ListItem,
+  ListItemText,
+  ListItemAvatar,
+  Avatar,
+  IconButton
+} from '@material-ui/core'
 
 const styles = (theme) => ({
   root: {
