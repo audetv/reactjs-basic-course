@@ -58,27 +58,13 @@ class Messages extends Component {
   sendMessage = (message) => {
 
     const { currentChat } = this.props;
-    const messages = this.state.messages;
-
-    if (!messages[currentChat]) {
-      this.setState({
-        messages: {
-          ...this.state.messages,
-          [currentChat]: [
-            {
-              text: message, author: 'User', date: new Date(),
-            }
-          ],
-        }
-      });
-    }
 
     if (message !== '') {
       this.setState({
         messages: {
           ...this.state.messages,
           [currentChat]: [
-            ...this.state.messages[currentChat],
+            ...(this.state.messages[currentChat] || []),
             {
               text: message, author: 'User', date: new Date(),
             }
