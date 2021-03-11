@@ -20,11 +20,14 @@ module.exports = {
     path: path.resolve(__dirname, 'static', 'build'),
     filename: 'bundle.js',
     assetModuleFilename: 'images/[hash][ext][query]',
+    publicPath: '/',
   },
   devServer: {
     contentBase: path.join(__dirname, 'static', 'build'),
     compress: true,
-    port: 3000
+    port: 3000,
+    hot: true,
+    historyApiFallback: true,
   },
   module: {
     rules: [

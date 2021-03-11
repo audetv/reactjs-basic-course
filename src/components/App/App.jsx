@@ -1,9 +1,9 @@
 import './App.css'
-import Layout from '../Layout/Layout';
+import { Router } from '../Router';
 
 const App = () => {
   return <div id="test-id">
-    <Layout />
+    <Router />
   </div>;
 };
 
