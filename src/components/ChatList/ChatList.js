@@ -1,12 +1,15 @@
 import { Component } from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import { List } from '@material-ui/core'
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Avatar from '@material-ui/core/Avatar';
+import { v4 as uuid } from 'uuid';
+import {
+  Icon,
+  List,
+  TextField,
+  withStyles,
+  IconButton
+} from '@material-ui/core'
+import { MenuItem } from './MenuItem';
 
-const useStyles = (theme) => ({
+const styles = (theme) => ({
   root: {
     width: '100%',
     maxWidth: 360,
@@ -15,26 +18,45 @@ const useStyles = (theme) => ({
 });
 
 class ChatList extends Component {
-  chats = [
-    {
-      id: 1,
-      name: 'Chat 1',
-      date: 'Jan 9, 2014',
-      avatar: '1',
-    },
-    {
-      id: 2,
-      name: 'Chat 2',
-      date: 'Jan 7, 2014',
-      avatar: '2',
-    },
-    {
-      id: 3,
-      name: 'Chat 3',
-      date: 'July 20, 2014',
-      avatar: '3',
-    },
-  ];
+  state = {
+    chats: [
+      {
+        id: '3589ff30-b78e-4d34-ae03-af1e51c761de',
+        name: 'Chat 1',
+        date: 'Jan 9, 2014',
+        avatar: '1',
+      },
+      {
+        id: '6861239f-4d22-41a9-bfff-5fb7bc6738c4',
+        name: 'Chat 2',
+        date: 'Jan 7, 2014',
+        avatar: '2',
+      },
+      {
+        id: '5e3d3917-0dd9-4edb-b4b5-aa97d87607bb',
+        name: 'Chat 3',
+        date: 'July 20, 2014',
+        avatar: '3',
+      },
+    ],
+    chatName: '',
+  }
+
+  addChat = () => {
+    if (this.state.chatName !== '') {
+      this.setState({
+        chats: [...this.state.chats,
+          {
+            id: uuid(),
+            name: this.state.chatName,
+            date: new Date().toLocaleDateString(),
+            avatar: '1'
+          }
+        ],
+        chatName: '',
+      });
+    }
+  }
 
   render() {
     const { classes } = this.props;
@@ -43,22 +65,37 @@ class ChatList extends Component {
       <div className='chat-list'>
         <List className={classes.root}>
           {
-            this.chats.map((chat) => (
-              <ListItem key={chat.id}>
-                <ListItemAvatar>
-                  <Avatar
-                    alt={`Avatar n°${chat.avatar}`}
-                    src={require(`./images/${chat.avatar}.jpg`)}
-                  />
-                </ListItemAvatar>
-                <ListItemText primary={chat.name} secondary={chat.date} />
-              </ListItem>
+            this.state.chats.map((chat, index) => (
+              <MenuItem key={index} {...chat} />
             ))
           }
         </List>
+        <div className="add-chat">
+          <TextField
+            value={this.state.chatName}
+            label='Start new chat'
+            onChange={(event) =>
+              this.setState({
+                chatName: event.target.value,
+              })
+            }
+            onKeyDown={(event) => {
+              if (event.key === 'Enter') {
+                this.addChat();
+              }
+            }}
+          />
+          <IconButton
+            color='primary'
+            variant='contained'
+            onClick={this.addChat}
+          >
+            <Icon>send</Icon>
+          </IconButton>
+        </div>
       </div>
     );
   }
 }
 
-export default withStyles(useStyles)(ChatList);
+export default withStyles(styles)(ChatList);

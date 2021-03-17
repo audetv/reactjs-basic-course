@@ -7,19 +7,29 @@ class Messages extends Component {
     super(props);
 
     this.state = {
-      messages: [
-        {
-          text: 'Hello world!',
-          author: 'User',
-          date: new Date()
-        },
-        {
-          text: 'How are you?',
-          author: 'User',
-          date: new Date()
-        }
-      ],
-      input: '',
+      messages: {
+        '3589ff30-b78e-4d34-ae03-af1e51c761de': [
+          {
+            text: 'Hello world!',
+            author: 'User',
+            date: new Date()
+          },
+          {
+            text: 'How are you?',
+            author: 'User',
+            date: new Date()
+          }
+        ],
+        '6861239f-4d22-41a9-bfff-5fb7bc6738c4': [],
+        '5e3d3917-0dd9-4edb-b4b5-aa97d87607bb': [
+          {
+            text: 'Hello from chat 2',
+            author: 'User',
+            date: new Date()
+          }
+        ]
+      },
+      textMessage: '',
     }
   }
 
@@ -46,12 +56,21 @@ class Messages extends Component {
   }
 
   sendMessage = (message) => {
+
+    const { currentChat } = this.props;
+
     if (message !== '') {
       this.setState({
-        messages: [
-          ...this.state.messages, { text: message, author: 'User', date: new Date() },
-        ],
-        'input': '',
+        messages: {
+          ...this.state.messages,
+          [currentChat]: [
+            ...(this.state.messages[currentChat] || []),
+            {
+              text: message, author: 'User', date: new Date(),
+            }
+          ]
+        },
+        'textMessage': '',
       });
     }
   }
@@ -66,11 +85,22 @@ class Messages extends Component {
     return { text: answers[Math.floor(Math.random() * 4)], author: 'Robot', date: new Date() };
   };
 
-  componentDidUpdate() {
-    if (this.getLastMessage().author === 'User') {
+  componentDidUpdate(_, prevState) {
+
+    const { currentChat } = this.props;
+
+    if (prevState.messages[currentChat]?.length !==
+      this.state.messages[currentChat]?.length &&
+      this.state.messages[currentChat]?.length % 2 === 1) {
       setTimeout(() => {
         this.setState({
-          messages: [...this.state.messages, this.getRandomAnswer()],
+          messages: {
+            ...this.state.messages,
+            [currentChat]: [
+              ...this.state.messages[currentChat],
+              this.getRandomAnswer(),
+            ]
+          },
         });
       }, 1000);
       this.inputRef.focus();
@@ -78,28 +108,29 @@ class Messages extends Component {
   };
 
   render() {
-    const messages = this.state.messages;
+    const { messages = [] } = this.state;
+    const { currentChat } = this.props;
 
     return (
       <div className='messages'>
         <div className='message-field'>
-          {messages.map((item, index) => (
+          {messages[currentChat] && messages[currentChat].map((item, index) => (
             <MessageItem key={index} message={item} />
           ))}
         </div>
         <div style={{ width: '100%', display: 'flex' }}>
           <TextField
             inputRef={el => this.inputRef = el}
-            name="input"
+            name="textMessage"
             style={{ fontSize: '22px' }}
             onChange={this.handleChange}
-            value={this.state.input}
-            onKeyDown={(event) => this.handleKeyUp(event, this.state.input)}
+            value={this.state.textMessage}
+            onKeyDown={(event) => this.handleKeyUp(event, this.state.textMessage)}
           />
           <IconButton
             color='primary'
             variant='contained'
-            onClick={() => this.handleClick(this.state.input)}
+            onClick={() => this.handleClick(this.state.textMessage)}
           >
             <Icon>send</Icon>
           </IconButton>
