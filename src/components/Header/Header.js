@@ -17,7 +17,7 @@ const useStyles = theme => ({
   },
 });
 
-class Header extends Component {
+class _Header extends Component {
   render() {
     const { classes } = this.props;
     return (
@@ -39,4 +39,5 @@ class Header extends Component {
   }
 }
 
-export default withStyles(useStyles)(Header)
+const Header = withStyles(useStyles)(_Header);
+export { Header }
