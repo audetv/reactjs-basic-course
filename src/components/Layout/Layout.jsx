@@ -3,9 +3,9 @@ import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 
 import { Messages } from '../Messages';
-import ChatList from '../ChatList/ChatList';
-import Header from '../Header/Header';
 import './Layout.scss';
+import { Header } from '../Header';
+import { ChatList } from '../ChatList';
 
 
 class _Layout extends Component {

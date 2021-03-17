@@ -7,7 +7,7 @@ import {
   withStyles,
   IconButton
 } from '@material-ui/core'
-import { MenuItem } from './MenuItem';
+import { MenuItem } from '../MenuItem';
 
 const styles = (theme) => ({
   root: {
@@ -17,7 +17,7 @@ const styles = (theme) => ({
   },
 });
 
-class ChatList extends Component {
+class _ChatList extends Component {
   state = {
     chats: [
       {
@@ -98,4 +98,5 @@ class ChatList extends Component {
   }
 }
 
-export default withStyles(styles)(ChatList);
+const ChatList = withStyles(styles)(_ChatList);
+export { ChatList };
